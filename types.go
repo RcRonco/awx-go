@@ -290,6 +290,157 @@ type Ping struct {
 	ActiveNode     string          `json:"active_node"`
 }
 
+// JobTemplate represents the awx api workflow template.
+type WorkflowJT struct {
+	ID                    int         `json:"id"`
+	Type                  string      `json:"type"`
+	URL                   string      `json:"url"`
+	Related               *Related    `json:"related"`
+	SummaryFields         *Summary    `json:"summary_fields"`
+	Created               time.Time   `json:"created"`
+	Modified              time.Time   `json:"modified"`
+	Name                  string      `json:"name"`
+	Description           string      `json:"description"`
+	LastJobRun            interface{} `json:"last_job_run"`
+	LastJobFailed         bool        `json:"last_job_failed"`
+	NextJobRun            interface{} `json:"next_job_run"`
+	Status                string      `json:"status"`
+	ExtraVars             string      `json:"extra_vars"`
+	Organization          int         `json:"organization"`
+	SurveyEnabled         bool        `json:"survey_enabled"`
+	AllowSimultaneous     bool        `json:"allow_simultaneous"`
+	AskVariablesOnLaunch  bool        `json:"ask_variables_on_launch"`
+	Inventory             int         `json:"inventory"`
+	Limit                 string      `json:"limit"`
+	SCMBranch             string      `json:"scm_branch"`
+	AskInventoryOnLaunch  bool        `json:"ask_inventory_on_launch"`
+	AskSCMBranchOnLaunch  bool        `json:"ask_scm_branch_on_launch"`
+	AskLimitOnLaunch      bool        `json:"ask_limit_on_launch"`
+	WebhookService        interface{} `json:"webhook_service"`
+	WebhookCredential     int         `json:"webhook_credential"`
+}
+
+// WorkflowLaunch represents the awx api workflow launch.
+type WorkflowLaunch struct {
+	Status                  string            `json:"status"`
+	IgnoredFields           map[string]string `json:"ignored_fields"`
+	Job                     int               `json:"job"`
+	ID                      int               `json:"id"`
+	Type                    string            `json:"type"`
+	URL                     string            `json:"url"`
+	Related                 *Related          `json:"related"`
+	SummaryFields           *Summary          `json:"summary_fields"`
+	Created                 time.Time         `json:"created"`
+	Modified                time.Time         `json:"modified"`
+	Name                    string            `json:"name"`
+	Description             string            `json:"description"`
+	JobType                 string            `json:"job_type"`
+	Inventory               int               `json:"inventory"`
+	Project                 int               `json:"project"`
+	Playbook                string            `json:"playbook"`
+	Forks                   int               `json:"forks"`
+	Limit                   string            `json:"limit"`
+	Verbosity               int               `json:"verbosity"`
+	ExtraVars               string            `json:"extra_vars"`
+	JobTags                 string            `json:"job_tags"`
+	ForceHandlers           bool              `json:"force_handlers"`
+	SkipTags                string            `json:"skip_tags"`
+	StartAtTask             string            `json:"start_at_task"`
+	Timeout                 int               `json:"timeout"`
+	UseFactCache            bool              `json:"use_fact_cache"`
+	UnifiedJobTemplate      int               `json:"unified_job_template"`
+	LaunchType              string            `json:"launch_type"`
+	Failed                  bool              `json:"failed"`
+	Started                 interface{}       `json:"started"`
+	Finished                interface{}       `json:"finished"`
+	Elapsed                 int               `json:"elapsed"`
+	JobArgs                 string            `json:"job_args"`
+	JobCwd                  string            `json:"job_cwd"`
+	JobEnv                  map[string]string `json:"job_env"`
+	JobExplanation          string            `json:"job_explanation"`
+	ExecutionNode           string            `json:"execution_node"`
+	ResultTraceback         string            `json:"result_traceback"`
+	EventProcessingFinished bool              `json:"event_processing_finished"`
+	JobTemplate             int               `json:"job_template"`
+	PasswordsNeededToStart  []interface{}     `json:"passwords_needed_to_start"`
+	AskDiffModeOnLaunch     bool              `json:"ask_diff_mode_on_launch"`
+	AskVariablesOnLaunch    bool              `json:"ask_variables_on_launch"`
+	AskLimitOnLaunch        bool              `json:"ask_limit_on_launch"`
+	AskTagsOnLaunch         bool              `json:"ask_tags_on_launch"`
+	AskSkipTagsOnLaunch     bool              `json:"ask_skip_tags_on_launch"`
+	AskJobTypeOnLaunch      bool              `json:"ask_job_type_on_launch"`
+	AskVerbosityOnLaunch    bool              `json:"ask_verbosity_on_launch"`
+	AskInventoryOnLaunch    bool              `json:"ask_inventory_on_launch"`
+	AskCredentialOnLaunch   bool              `json:"ask_credential_on_launch"`
+	AllowSimultaneous       bool              `json:"allow_simultaneous"`
+	Artifacts               map[string]string `json:"artifacts"`
+	ScmRevision             string            `json:"scm_revision"`
+	InstanceGroup           interface{}       `json:"instance_group"`
+	DiffMode                bool              `json:"diff_mode"`
+	Credential              int               `json:"credential"`
+	VaultCredential         interface{}       `json:"vault_credential"`
+}
+
+// Job represents the awx api job.
+type WorkflowJob struct {
+	ID                      int               `json:"id"`
+	Type                    string            `json:"type"`
+	URL                     string            `json:"url"`
+	Related                 *Related          `json:"related"`
+	SummaryFields           *Summary          `json:"summary_fields"`
+	Created                 time.Time         `json:"created"`
+	Modified                time.Time         `json:"modified"`
+	Name                    string            `json:"name"`
+	Description             string            `json:"description"`
+	JobType                 string            `json:"job_type"`
+	Inventory               int               `json:"inventory"`
+	Project                 int               `json:"project"`
+	Playbook                string            `json:"playbook"`
+	Forks                   int               `json:"forks"`
+	Limit                   string            `json:"limit"`
+	Verbosity               int               `json:"verbosity"`
+	ExtraVars               string            `json:"extra_vars"`
+	JobTags                 string            `json:"job_tags"`
+	ForceHandlers           bool              `json:"force_handlers"`
+	SkipTags                string            `json:"skip_tags"`
+	StartAtTask             string            `json:"start_at_task"`
+	Timeout                 int               `json:"timeout"`
+	UseFactCache            bool              `json:"use_fact_cache"`
+	UnifiedJobTemplate      int               `json:"unified_job_template"`
+	LaunchType              string            `json:"launch_type"`
+	Status                  string            `json:"status"`
+	Failed                  bool              `json:"failed"`
+	Started                 time.Time         `json:"started"`
+	Finished                time.Time         `json:"finished"`
+	Elapsed                 float64           `json:"elapsed"`
+	JobArgs                 string            `json:"job_args"`
+	JobCwd                  string            `json:"job_cwd"`
+	JobEnv                  map[string]string `json:"job_env"`
+	JobExplanation          string            `json:"job_explanation"`
+	ExecutionNode           string            `json:"execution_node"`
+	ResultTraceback         string            `json:"result_traceback"`
+	EventProcessingFinished bool              `json:"event_processing_finished"`
+	JobTemplate             int               `json:"job_template"`
+	PasswordsNeededToStart  []interface{}     `json:"passwords_needed_to_start"`
+	AskDiffModeOnLaunch     bool              `json:"ask_diff_mode_on_launch"`
+	AskVariablesOnLaunch    bool              `json:"ask_variables_on_launch"`
+	AskLimitOnLaunch        bool              `json:"ask_limit_on_launch"`
+	AskTagsOnLaunch         bool              `json:"ask_tags_on_launch"`
+	AskSkipTagsOnLaunch     bool              `json:"ask_skip_tags_on_launch"`
+	AskJobTypeOnLaunch      bool              `json:"ask_job_type_on_launch"`
+	AskVerbosityOnLaunch    bool              `json:"ask_verbosity_on_launch"`
+	AskInventoryOnLaunch    bool              `json:"ask_inventory_on_launch"`
+	AskCredentialOnLaunch   bool              `json:"ask_credential_on_launch"`
+	AllowSimultaneous       bool              `json:"allow_simultaneous"`
+	Artifacts               map[string]string `json:"artifacts"`
+	ScmRevision             string            `json:"scm_revision"`
+	InstanceGroup           int               `json:"instance_group"`
+	DiffMode                bool              `json:"diff_mode"`
+	Credential              *Credential       `json:"credential"`
+	VaultCredential         interface{}       `json:"vault_credential"`
+}
+
+
 // JobTemplate represents the awx api job template.
 type JobTemplate struct {
 	ID                    int         `json:"id"`
@@ -658,4 +809,25 @@ type Host struct {
 	LastJobHostSummary   *HostSummary `json:"last_job_host_summary"`
 	InsightsSystemID     interface{}  `json:"insights_system_id"`
 	AnsibleFactsModified interface{}  `json:"ansible_facts_modified"`
+}
+
+type SurveySpec struct {
+	Description string      `json:"question_description"`
+	Min         int         `json:"min"`
+	IDefault    interface{} `json:"default"`
+	Max         int         `json:"max"`
+	Choices     string      `json:"choices"`
+	Required    bool        `json:"required"`
+	Variable    string      `json:"variable"`
+	Name        string      `json:"question_name"`
+	Type        string      `json:"type"`
+	NewQuestion bool        `json:"new_question,omitempty"`
+
+	Default string
+}
+
+type Survey struct {
+	Name        string       `json:"name"`
+	Description string       `json:"description"`
+	Spec        []SurveySpec `json:"spec"`
 }
